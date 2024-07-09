@@ -1,0 +1,81 @@
+﻿@model E_Commerce_Cake.Models.Database.Payment
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+
+}
+
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Transaction Detail</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="Index" asp-controller="Transaction">Back</a>
+                    <span>Transaction Detail</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<hr />
+
+<section class="contact spad">
+    <div class="container">
+        <div class="contact__address">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form">
+
+                        <div>
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.TransId)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.TransId)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.OrderId)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.OrderId)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Price
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Inv.TotalBill)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Status.Name)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Time
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Inv.Time.Name)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

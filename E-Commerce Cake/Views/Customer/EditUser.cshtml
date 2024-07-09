@@ -1,0 +1,94 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.UserVM
+
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+}
+
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Update Account</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="CustomerUser" asp-route-id="@Model.Phone" asp-controller="Customer">Back</a>
+                    <a asp-action="AfterLogin" asp-controller="Cart">Shop</a>
+                    <span>@Model.Username</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+    <div>
+        <div class="col-lg-12">
+            <div class="contact__form">
+                <form asp-action="EditUser" enctype="multipart/form-data">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-lg-4">
+                            <label asp-for="photo" class="text-black"> Image</label>
+                            <input asp-for="photo" class="form-control" placeholder="Image" />
+                            <span asp-validation-for="photo" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label asp-for="FirstName" class="text-black">First Name</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Enter Your First Name" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label asp-for="LastName" class="text-black">Last Name</label>
+                            <input asp-for="LastName" class="form-control" placeholder="Enter Your Last Name" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label asp-for="BirthDate" class="text-black">Birth Date</label>
+                            <input asp-for="BirthDate" class="form-control" placeholder="Enter Your Birth Date" />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label asp-for="Username" class="text-black">User Name</label>
+                            <input asp-for="Username" class="form-control" placeholder="Create User Name" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label asp-for="Email" class="text-black">Customer Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter Your Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label asp-for="Phone" class="text-black">Mobile No</label>
+                            <input asp-for="Phone" class="form-control" placeholder="Enter Your Mobile Number" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="Pass" class="text-black">Password</label>
+                            <input asp-for="Pass" class="form-control" placeholder="Create Password" />
+                            <span asp-validation-for="Pass" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="ConfirmPass" class="text-black">Confirm Password</label>
+                            <input asp-for="ConfirmPass" class="form-control" placeholder="Enter Password" />
+                            <span asp-validation-for="ConfirmPass" class="text-danger"></span>
+                        </div>
+                        <div class="form-group row col-lg-12" style="margin-top:5px;">
+                            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

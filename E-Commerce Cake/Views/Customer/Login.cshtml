@@ -1,0 +1,171 @@
+﻿@model E_Commerce_Cake.Models.Database.User
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<h1 class="row justify-content-center" style="font-weight:bold;">Customer</h1>
+
+<h4 class="row justify-content-center">Login</h4>
+@{
+    
+    if (TempData["Register"] != null)
+    {
+        <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+            <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+                <h2 class="text-success">Congratulations!</h2>
+                <p>You Are Successfully Register</p>
+                <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+    if (TempData["Forgot"] != null)
+    {
+        <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            z-index:9999;
+            justify-content: center;
+            align-items: center;" id="overlay">
+            <div style="
+            z-index:9999;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;">
+                <h2 class="text-success">Congratulations!</h2>
+                <p>Password Updated.</p>
+                <button style="
+            padding: 10px 20px;
+            z-index:9999;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+    if (ViewData["RegNotister"] != null)
+    {
+        <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+            <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+                <h2 class="text-danger">Sorry!</h2>
+                <p>Data Not Found</p>
+                <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+
+}
+<hr />
+<div class="row justify-content-center mt-3">
+    <div class="col-md-4">
+        <form asp-action="Login" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Phone" class="text-black">Mobile No</label>
+                <input asp-for="Phone" class="form-control" placeholder="Mobile Number" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Pass" class="text-black">Password</label>
+                <input asp-for="Pass" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div style="margin-top:10px;">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+            </div>
+        </form>
+<div>
+    <a asp-action="Index" asp-controller="Home">Home</a><br />
+    <a asp-action="Register" asp-controller="Customer">Create New Account</a><br />
+    <a asp-action="MobileCheck" asp-controller="Customer">Forgot Password</a>
+</div>
+    </div>
+</div>
+
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+ *@

@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewData["Title"] = "EditPageView";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+
+}
+
+<a class="btn bg-info text-black" asp-action="AddSubCategory" asp-controller="Products" asp-route-id="@TempData["EditId"]">Add Sub Category</a>
+

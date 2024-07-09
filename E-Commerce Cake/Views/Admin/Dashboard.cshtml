@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "../Shared/_Admin.cshtml";
+}
+@{
+    if (TempData["Data2"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulation...!</strong>@TempData["Data2"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    }
+}
+
+<h1 class="row justify-content-center">Hello Admin</h1>
+<div class="row justify-content-center">
+    <div class="boxsample row justify-content-center">
+        <div class="card text-white bg-primary mb-3 box-sam" style="max-width: 20rem;">
+            <div class="card-header">Category</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.cate</h5>
+            </div>
+        </div>
+        <div class="card text-white bg-primary mb-3 box-sam" style="max-width: 20rem;">
+            <div class="card-header">Total Product</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.product</h5>
+            </div>
+        </div>
+    </div>
+    <div class="boxsample row justify-content-center">
+        <div class="card text-white bg-primary mb-3 box-sam" style="max-width: 20rem;">
+            <div class="card-header">Total Choice</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.choice</h5>
+            </div>
+        </div>
+        <div class="card text-white bg-primary mb-3 box-sam" style="max-width: 20rem;">
+            <div class="card-header">Total Order</div>
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.order</h5>
+            </div>
+        </div>
+    </div>
+</div>
+

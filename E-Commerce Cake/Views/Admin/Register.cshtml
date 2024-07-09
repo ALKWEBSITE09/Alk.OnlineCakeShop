@@ -1,0 +1,76 @@
+﻿@model E_Commerce_Cake.Models.Database.Admin
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<h1 class="row justify-content-center">Admin</h1>
+
+<h4 class="row justify-content-center">Register</h4>
+<hr />
+
+
+
+<div class="container">
+    <div>
+        <div class="col-lg-12">
+            <div class="contact__form">
+                <form asp-action="Register">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-lg-6">
+                            <label asp-for="UserName" class="form-label">User Name</label>
+                            <input asp-for="UserName" class="form-control" placeholder="User Name" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="ShopOpenDate" class="form-label">Shop Open Date</label>
+                            <input asp-for="ShopOpenDate" class="form-control" placeholder="Shop Open Date" />
+                            <span asp-validation-for="ShopOpenDate" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="ShopName" class="form-label">Shop Name</label>
+                            <input asp-for="ShopName" class="form-control" placeholder="Shop Name" />
+                            <span asp-validation-for="ShopName" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="ShopOwnerName" class="form-label">Shop Owner Name</label>
+                            <input asp-for="ShopOwnerName" class="form-control" placeholder="Shop Owner Name" />
+                            <span asp-validation-for="ShopOwnerName" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="Phone" class="form-label">Mobile No</label>
+                            <input asp-for="Phone" class="form-control" placeholder="Mobile Number" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="Pass" class="form-label">Password</label>
+                            <input asp-for="Pass" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Pass" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label asp-for="ConfirmPass" class="form-label">Confirm Password</label>
+                            <input asp-for="ConfirmPass" class="form-control" placeholder="Confirm Password" />
+                            <span asp-validation-for="ConfirmPass" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="margin-top:5px;">
+                            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+                        </div>
+                    </div>
+                        <div>
+                            <a asp-action="Index" asp-controller="Home">Home</a><br />
+                            <a asp-action="Login" asp-controller="Admin">already register</a>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+   

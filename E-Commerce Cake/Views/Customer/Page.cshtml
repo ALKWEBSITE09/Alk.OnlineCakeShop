@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "Page";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<a class="btn btn-success text-white" asp-route-id="@TempData["Pass"]" asp-action="ForgotPass" asp-controller="Customer">Update Password</a>
+<a class="btn bg-black text-white" asp-action="MobileCheck" asp-controller="Customer">Back To List</a>
+

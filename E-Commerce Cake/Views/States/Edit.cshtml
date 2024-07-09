@@ -1,0 +1,31 @@
+﻿@model E_Commerce_Cake.Models.Database.State
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+
+}
+
+<h1 class="row justify-content-center">Edit State</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-floating mb-10 margin">
+                <input asp-for="Name" class="form-control " autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Name" class="form-label">State Name</label>
+                <span asp-validation-for="Name" class="text-danger "></span>
+            </div>
+            <div style="margin-top:10px;">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary text-uppercase">Update State</button>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,63 @@
+﻿@model E_Commerce_Cake.Models.Database.Product
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+
+}
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Product detail</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+
+                    <a asp-action="AfterLogin" asp-controller="Cart">Shop</a>
+                    <span>@Model.Name</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Shop Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__details__img">
+                    <div class="product__details__big__img">
+                        <img class="big_img" src="~/Images//Product/@Model.ImagePath" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details__text">
+                    <div class="product__label">@Model.Cg.Tittle</div>
+                    <h4>@Model.Name</h4>
+                    <h5>@Model.Price INR</h5>
+                    <p>
+                       @Model.Description
+                    </p>
+                    <ul>
+                        <li>Category: <span>@Model.Scg.tittle</span></li>
+                    </ul>
+                    <div class="product__details__option">
+                        
+                        <a asp-action="AddCart" asp-route-id="@Model.Id" class="primary-btn">Add to cart</a>
+                        <a asp-action="AddFavo" asp-controller="Favorate" asp-route-id="@Model.Id" class="heart__btn"><span class="icon_heart_alt"></span></a>
+                        <a asp-action="Index" asp-controller="Reviews" asp-route-id="@Model.Id" class="primary-btn">Review</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->

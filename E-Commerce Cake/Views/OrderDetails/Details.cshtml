@@ -1,0 +1,53 @@
+﻿@model E_Commerce_Cake.Models.Database.OrderDetail
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "../Shared/_Admin.cshtml";
+}
+
+<h1>Item Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Item Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Category Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item.Cg.Tittle)
+        </dd>
+        <dt class="col-sm-2">
+            Sub Category Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Item.Scg.tittle)
+        </dd>
+        <dt class = "col-sm-2">
+            Quantity
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            Price
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Price
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubTotal)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn bg-dark text-white" asp-route-id="@Model.Id" asp-action="Index">Back to List</a>
+</div>

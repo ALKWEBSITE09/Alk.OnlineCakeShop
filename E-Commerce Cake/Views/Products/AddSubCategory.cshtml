@@ -1,0 +1,29 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.AddSubCategory
+
+@{
+    ViewData["Title"] = "AddSubCategory";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+
+}
+
+<h1 class="row justify-content-center">Add Sub-Category</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="AddSubCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-floating mb-10 margin">
+                <select asp-for="SubCategoryId" class="form-control" asp-items="ViewBag.SubCategoryId" autocomplete="username" aria-required="true" placeholder="name@example.com"></select>
+                <label asp-for="SubCategoryId" class="form-label">SubCategory Name</label>
+                <span asp-validation-for="SubCategoryId" class="text-danger "></span>
+            </div>
+            <div style="margin-top:10px;">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary text-uppercase">Add SubCategory</button>
+            </div>
+    
+        </form>
+    </div>
+</div>
+

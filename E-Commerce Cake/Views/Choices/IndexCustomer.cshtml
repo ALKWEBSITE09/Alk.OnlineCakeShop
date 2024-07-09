@@ -1,0 +1,317 @@
+﻿@model IEnumerable<E_Commerce_Cake.Models.Database.Choice>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+
+}
+@if(TempData["choice"] != null)
+{
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+        <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+            <h2 class="text-success">Congratulations!</h2>
+            <p>Message Successfully Send.</p>
+            <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+} 
+
+@if (TempData["Accept"] != null)
+{
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+        <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+            <h2 class="text-success">Successfully!</h2>
+            <p>Accepted.</p>
+            <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+}
+@if (TempData["NotAccept"] != null)
+{
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+        <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+            <h2 class="text-danger">Ohh!</h2>
+            <p>Not Accepted.</p>
+            <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+
+}
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>ChoiceList</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="AfterLogin" asp-controller="Cart">Back</a>
+                    <span>ChoiceList</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<hr />
+<!-- Wishlist Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shopping__cart__table">
+                    <table class="table mt-2">
+                        <thead class="bg-dark text-white text-uppercase tbody border-1 border-dark">
+                            <tr>
+                                <th class="text-white">
+                                    Image
+                                </th>
+                                <th class="text-white">
+                                    Quantity
+                                </th>
+
+                                <th class="text-white">
+                                    Price
+                                </th>
+                                <th class="text-white">
+                                    Price Accept
+                                </th>
+                                <th class="text-white">Order Status</th>
+                                <th class="text-white">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/Images/Choice/@Html.DisplayFor(modelItem => item.Image)" width="100px" height="100px" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PriceId)
+                                    </td>
+                                    <td>
+                                        <a class="btn bg-success text-white" asp-action="AcceptCustomer" asp-route-id="@item.Id">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
+                                            </svg>
+                                        </a> |
+                                        <a class="btn bg-danger text-white" asp-action="NotAcceptCustomer" asp-route-id="@item.Id">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                            </svg>
+                                        </a> |
+                                        @if (item.ChoiceorderId != 2)
+                                        {
+                                            <a class="btn bg-warning text-white" asp-action="Accepted" asp-route-id="@item.Id">Order</a>
+
+                                        }
+                                        else
+                                        {
+                                            <a class="text-success">Success</a>
+                                        }
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status.Name)
+                                    </td>
+                                    <td>
+                                        <a class="btn bg-dark text-white" asp-action="DetailsCustomer" asp-route-id="@item.Id">Details</a> |
+                                        <a class="btn bg-danger text-white" asp-action="Delete" asp-route-id="@item.Id">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+                                                <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z" />
+                                            </svg>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Wishlist Section End -->
+@* 
+<table class="table">
+    <thead class="bg-dark text-white text-uppercase tbody border-1 border-dark">
+        <tr>
+            
+            <th>
+                Image
+            </th>
+            <th>
+                Quantity
+            </th>
+            
+            <th>
+                Price
+            </th>
+            <th>
+                Price Accept
+            </th>
+            <th>Order Status</th>
+            <th>Action</th>
+        </tr>
+    </thead class="bg-light tbody border-1 border-dark">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    <img src="~/Images/Choice/@Html.DisplayFor(modelItem => item.Image)" width="100px" height="100px"/>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceId)
+                </td>
+                <td>
+                    <a class="btn bg-success text-white" asp-action="AcceptCustomer" asp-route-id="@item.Id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                            <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
+                        </svg>
+                    </a> |
+                    <a class="btn bg-danger text-white" asp-action="NotAcceptCustomer" asp-route-id="@item.Id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        </svg>
+                    </a> |
+                    @if (item.ChoiceorderId != 2)
+                    {
+                        <a class="btn bg-warning text-white" asp-action="Accepted" asp-route-id="@item.Id">Order</a>
+
+                    }
+                    else
+                    {
+                        <a class="text-success">Success</a>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.Name)
+                </td>
+                <td>
+                    <a class="btn bg-dark text-white" asp-action="DetailsCustomer" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn bg-danger text-white" asp-action="Delete" asp-route-id="@item.Id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+                            <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z" />
+                        </svg>
+                    </a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+ *@

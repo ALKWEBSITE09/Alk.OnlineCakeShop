@@ -1,0 +1,61 @@
+﻿@model E_Commerce_Cake.Models.Database.Admin
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<h1 class="row text-uppercase justify-content-center">Admin</h1>
+
+<h4 class="row justify-content-center">Login</h4>
+@{
+    if (TempData["Data"] != null)
+    {
+        <div class="alert justify-content-center alert-success alert-dismissible fade show" role="alert">
+            <strong>Congatulation...!</strong>@TempData["Data"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    if (ViewData["Data"] != null)
+    {
+        <div class="alert justify-content-center alert-warning alert-dismissible fade show" role="alert">
+            <strong>ohh...!</strong>@ViewData["Data"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+}
+<hr />
+
+
+<div class="row justify-content-center" style="color:black;">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-3">
+                <label asp-for="ShopName" class="form-label">ShopName</label>
+                <input asp-for="ShopName" class="form-control" placeholder="Shop Namw" />
+                <span asp-validation-for="ShopName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <label asp-for="Phone" class="form-label">Mobile No</label>
+                <input asp-for="Phone" class="form-control" placeholder="Mobile Number" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <label asp-for="Pass" class="form-label">Password</label>
+                <input asp-for="Pass" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div style="margin-top:10px;">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+            </div>
+            <div >
+                <a asp-action="Index" asp-controller="Home">Home</a><br />
+                <a asp-action="Register" asp-controller="Admin">Create New Account</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+

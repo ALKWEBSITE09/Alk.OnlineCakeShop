@@ -1,0 +1,36 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.UserVM
+
+@{
+    ViewData["Title"] = "ForgotPass";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<h1>User</h1>
+
+<h4>Forgot Password</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ForgotPass">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Pass" class="text-black">Password</label>
+                <input asp-for="Pass" class="form-control" placeholder="Create new Password" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ConfirmPass" class="text-black">Confirm Password</label>
+                <input asp-for="ConfirmPass" class="form-control" placeholder="Enter Password" />
+                <span asp-validation-for="ConfirmPass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Change" class="btn btn-primary" />
+                <a class="btn bg-black text-white" asp-action="MobileCheck" asp-controller="Customer">Back to List</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+

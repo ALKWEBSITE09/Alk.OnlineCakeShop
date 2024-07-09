@@ -1,0 +1,68 @@
+﻿@model E_Commerce_Cake.Models.Database.Invoice
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "../Shared/_Customer.cshtml";
+
+}
+
+<h1 class="row justify-content-center"> Delivery Address</h1>
+
+<hr />
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact__form">
+                    <form asp-action="Index">
+                        <div class="row">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="col-lg-6">
+                                <label asp-for="Address" class="form-label">Address<a class="text-danger text-decoration-none">*</a></label>
+                                <textarea asp-for="Address" name="address" placeholder="Address" required></textarea>
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-1" style="padding-left:1em">
+                                <label asp-for="StateId" class="form-label">State<a class="text-danger text-decoration-none">*</a></label>
+                                <select asp-for="StateId" name="state" asp-items="@ViewBag.State" placeholder="Select State" required>
+                                </select>
+                                <span asp-validation-for="StateId" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-1 ml-lg-3" style="padding-left:4em">
+                                <label asp-for="CityId" class="form-label">City<a class="text-danger text-decoration-none">*</a></label>
+                                <select asp-for="CityId" name="city" asp-items="@ViewBag.City" placeholder="City" required>
+                                </select>
+                                <span asp-validation-for="CityId" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-2 ml-lg-3" style="padding-left:5em">
+                                <label asp-for="AreaId" class="form-label">Area<a class="text-danger text-decoration-none">*</a></label>
+                                <select asp-for="AreaId" name="area" asp-items="@ViewBag.Area" placeholder="Area" required>
+                                    <option>Select Area</option>
+                                </select>
+                                <span asp-validation-for="AreaId" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <label asp-for="Name" class="Name-label">Full Name<a class="text-danger text-decoration-none">*</a></label>
+                                <input asp-for="Name" name="name" placeholder="Your Name" required />
+                                <span asp-validation-for="CouponCode" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <label asp-for="Phone" class="Name-label">Mobile No<a class="text-danger text-decoration-none">*</a></label>
+                                <input asp-for="Phone" name="phone" placeholder="Mobile Number" required />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                            <div style="margin-top:10px;">
+                                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary text-uppercase">Get Details</button>
+                            </div>
+                        </div>
+                            <div>
+                                <a asp-action="CheckOut" asp-controller="Cart">Back to List</a>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

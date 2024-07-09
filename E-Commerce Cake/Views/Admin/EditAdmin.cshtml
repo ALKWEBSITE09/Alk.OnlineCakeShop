@@ -1,0 +1,78 @@
+﻿@model E_Commerce_Cake.Models.Database.Admin
+
+@{
+    ViewData["Title"] = "EditAdmin";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Admin</h1>
+@{
+    if (ViewBag.Datas != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulation...!</strong>@ViewBag.Datas
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
+
+    
+
+<h4>Edit Admin</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditAdmin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-floating mb-3">
+                <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="UserName" class="form-label">User Name</label>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ShopOpenDate" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="ShopOpenDate" class="form-label">Shop Open Date</label>
+                <span asp-validation-for="ShopOpenDate" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ShopName" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="ShopName" class="form-label">Shop Name</label>
+                <span asp-validation-for="ShopName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ShopOwnerName" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="ShopOwnerName" class="form-label">Shop Owner Name</label>
+                <span asp-validation-for="ShopOwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Email" class="form-label">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Phone" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Phone" class="form-label">Mobile No</label>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Pass" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Pass" class="form-label">Password</label>
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ConfirmPass" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="ConfirmPass" class="form-label">Confirm Password</label>
+                <span asp-validation-for="ConfirmPass" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top:5px;">
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Dashboard">Back to List</a>
+</div>
+

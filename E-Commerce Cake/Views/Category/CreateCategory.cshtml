@@ -1,0 +1,35 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.CategoryVM
+
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+
+}
+
+<h1 class="row justify-content-center">Add New Category</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <form asp-action="CreateCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-10 margin" >
+                <input asp-for="Tittle" class="form-control " autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Tittle" class="form-label">Category Name</label>
+                <span asp-validation-for="Tittle" class="text-danger "></span>
+            </div>
+            <div style="margin-top:10px;">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary text-uppercase">Add Category</button>
+            </div>
+            <div>
+                <a asp-action="CategoryList">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

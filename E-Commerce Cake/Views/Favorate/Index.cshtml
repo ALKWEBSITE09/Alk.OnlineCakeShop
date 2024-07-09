@@ -1,0 +1,159 @@
+﻿@model IEnumerable<E_Commerce_Cake.Models.Database.Favorate>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+
+}
+@{
+    if (TempData["favodelete"] != null)
+    {
+        <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        z-index:9999;
+                        justify-content: center;
+                        align-items: center;" id="overlay">
+            <div style="
+                        z-index:9999;
+                        background-color: #fff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        text-align: center;">
+                <h2 class=" text-danger">Done!</h2>
+                <p>@TempData["favodelete"]</p>
+                <button style="
+                        padding: 10px 20px;
+                        z-index:9999;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+}
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Wishlist</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="AfterLogin" asp-controller="Cart">Back</a>
+                    <span>Wishlist</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Wishlist Section Begin -->
+<section class="wishlist spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wishlist__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Unit Price</th>
+                                <th>Stock</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="~/Images//Product/@item.Item.ImagePath" width="120px" height="120px" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>@item.Item.Name</h6>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">@item.Item.Price</td>
+                                    <td class="cart__stock">In stock</td>
+                                    <td class="cart__btn"><a asp-action="AddCart" asp-controller="Cart" asp-route-id="@item.itemId" class="primary-btn">Add to cart</a></td>
+                                    <td class="cart__close"><a asp-action="Delete" asp-route-id="@item.Id"><span class="icon_close"></span></a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Wishlist Section End -->
+@* 
+<h1 class="row justify-content-center fw-bold">Favorate List</h1>
+
+<hr />
+<div class="ProductBox"  style="display:flex; flex-wrap:wrap;" > 
+    @foreach (var item in Model) {
+            <div class="card" style="width: 16rem; margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px; ">
+                <img src="~/Images//Product/@Html.DisplayFor(modelItem => item.Item.ImagePath)" width="150px" height="150px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight:bold;">
+                       <td>
+                            @Html.DisplayFor(modelItem => item.Item.Cg.Tittle)
+                       </td>
+                     </h5>
+                 <p class="card-text"  >
+                     <td>
+                            @Html.DisplayFor(modelItem => item.Item.Description)
+                     </td>
+                     <td>
+                            @Html.DisplayFor(modelItem => item.Item.Name)
+                     </td>
+                     <td>
+                            @Html.DisplayFor(modelItem => item.Item.Scg.tittle)
+                     </td>
+                     <td>
+                            @Html.DisplayFor(modelItem => item.Item.Price)
+                     </td>   
+                </p>
+                <p>
+                     <a asp-action="AddCart" asp-controller="Cart" asp-route-id="@item.itemId" class="btn btn-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                        </svg>
+                     </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+                            <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z" />
+                        </svg>
+                    </a>
+                    <a asp-action="Index" asp-controller="Reviews" asp-route-id="@item.itemId" class="btn btn-info cartindex">Review</a>
+
+                </p>
+                </div>
+            </div>
+    }
+</div>
+ *@

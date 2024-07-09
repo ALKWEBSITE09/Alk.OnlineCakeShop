@@ -1,0 +1,92 @@
+﻿@model IEnumerable<E_Commerce_Cake.Models.Database.OrderDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "../Shared/_Customer.cshtml";
+}
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>OrderDetailsList</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="IndexCustomer" asp-controller="Invoices">Back</a>
+                    <span>OrderDetailsList</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<hr />
+<!-- Wishlist Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shopping__cart__table">
+                    <table class="table mt-2">
+                        <thead class="bg-dark text-white text-uppercase tbody border-1 border-dark">
+                            <tr>
+                                <th class="text-white">
+                                    Image
+                                </th>
+                                <th class="text-white">
+                                    Item Name
+                                </th>
+                                <th class="text-white">
+                                    Category
+                                </th>
+                                <th class="text-white">
+                                    Quantity
+                                </th>
+                                <th class="text-white">
+                                    Price
+                                </th>
+
+                                <th class="text-white">Action</th>
+                                <th class="text-white">Review</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/Images//Product/@Html.DisplayFor(modelItem => item.Item.ImagePath)" width="100px" height="100px" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Item.Cg.Tittle)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        <a class="btn bg-dark text-white" asp-action="DetailsCustomer" asp-route-id="@item.Id">Details</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn bg-dark text-white" asp-action="Create" asp-controller="Reviews" asp-route-id="@item.itemId">Add</a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

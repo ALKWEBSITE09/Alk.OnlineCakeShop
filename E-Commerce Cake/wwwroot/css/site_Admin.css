@@ -1,0 +1,158 @@
+﻿/* Reset styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-left: 2em;
+}
+
+header {
+    background-color: white;
+    color: #fff;
+    padding: 20px 0;
+}
+
+    header nav ul {
+        list-style: none;
+    }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+            header nav ul li a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+
+.hero {
+    background-image: url('hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: black;
+    margin-right: 9em;
+}
+
+    .hero h2 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+.Shopbtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 17em;
+    margin-right: 31em;
+    margin-top: 1em;
+}
+
+
+.featured-products {
+    padding: 50px 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.navbars {
+    background-color: chocolate;
+    border-radius: 2em;
+    background: #22284a;
+    margin-top:1em;
+}
+
+.list {
+    padding: 1em;
+}
+
+.Home {
+    margin-left: 2em;
+    text-decoration: none;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    color: black;
+}
+
+.Login {
+    margin-left: 32rem;
+}
+
+.header__logo {
+    margin-left: 3em;
+}
+.Account{
+    text-decoration:none;
+    margin-right:1em;
+}
+.logout {
+    text-decoration: none;
+    margin-right: 1em;
+}
+header .header-inner {
+    margin-top: 8px;
+    
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.Items{
+    margin-left:1em;
+    margin-right:1em;
+}
+.Items1 {
+    margin-right: 1em;
+}
+.btn-group.Items:hover {
+    color: orange;
+}
+
+.btn-group.Items1:hover {
+    color: orange;
+}
+.module:hover {
+    color: orange;
+}
+
+.logout.text-black.module:hover {
+    color: orange;
+}
+.tbody:hover{
+    background-color:white;
+}
+.td{
+    margin-left:1em;
+}
+
+.boxsample{
+    display:flex;
+    flex-direction:row;
+}
+
+.box-sam{
+    padding-right:10em;
+    margin-right:2em;
+}

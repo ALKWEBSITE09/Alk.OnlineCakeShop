@@ -1,0 +1,156 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.ContactUsVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+
+}
+
+@if (ViewBag.ContactUs != null)
+{
+
+    <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+        <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+            <h2 class="text-success">Congratulations!</h2>
+            <p>Message Send Successufully.</p>
+            <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+}
+
+<!-- Contact Section Begin -->
+<section class="contact spad">
+    <div class="container">
+        
+        <div class="contact__address">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="contact__address__item">
+                        <h6>san bernardino</h6>
+                        <ul>
+                            <li>
+                                <span class="icon_pin_alt"></span>
+                                <p>795 W 5th St, San Bernardino, CA 92410, USA</p>
+                            </li>
+                            <li>
+                                <span class="icon_headphones"></span>
+                                <p>+1 800-786-1000</p>
+                            </li>
+                            <li>
+                                <span class="icon_mail_alt"></span>
+                                <p>Sweetcake@support.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="contact__address__item">
+                        <h6>Los angeles</h6>
+                        <ul>
+                            <li>
+                                <span class="icon_pin_alt"></span>
+                                <p>639 S Spring St, Los Angeles, CA 90014, USA</p>
+                            </li>
+                            <li>
+                                <span class="icon_headphones"></span>
+                                <p>+1 213-612-3000</p>
+                            </li>
+                            <li>
+                                <span class="icon_mail_alt"></span>
+                                <p>Sweetcake@support.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="contact__address__item">
+                        <h6>san bernardino</h6>
+                        <ul>
+                            <li>
+                                <span class="icon_pin_alt"></span>
+                                <p>1000 Lakepoint Dr, Frisco, CO 80443, USA</p>
+                            </li>
+                            <li>
+                                <span class="icon_headphones"></span>
+                                <p>+1 800-786-1000</p>
+                            </li>
+                            <li>
+                                <span class="icon_mail_alt"></span>
+                                <p>Sweetcake@support.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact__text">
+                    <h3>Contact With us</h3>
+                    <ul>
+                        <li>Representatives or Advisors are available:</li>
+                        <li>Mon-Fri: 5:00am to 9:00pm</li>
+                        <li>Sat-Sun: 6:00am to 9:00pm</li>
+                    </ul>
+                    <img src="img/cake-piece.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="contact__form">
+                    <form asp-action="Create">
+                        <div class="row">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="col-lg-6">
+                                <input asp-for="Name" type="text" placeholder="Name">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <input asp-for="Email" type="text" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea asp-for="Description" placeholder="Message"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="site-btn">Send Us</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->

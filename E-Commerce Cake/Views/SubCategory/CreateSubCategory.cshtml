@@ -1,0 +1,43 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.SubCategoryVM
+
+@{
+    ViewData["Title"] = "CreateSubCategory";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+
+}
+
+<h1>CreateSubCategory</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateSubCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-10 margin">
+                <input asp-for="tittle" class="form-control " autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="tittle" class="form-label">Sub-Category Name</label>
+                <span asp-validation-for="tittle" class="text-danger "></span>
+            </div>
+            
+            <div class="form-floating mb-10 margin" style="margin-top:10px;">
+                <select asp-for="CategoryesId" asp-items="@ViewBag.data" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com">
+                    <option>select options</option>
+                </select>
+                <label asp-for="CategoryesId" class="form-label">Category Name</label>
+                <span asp-validation-for="CategoryesId" class="text-danger "></span>
+            </div>
+            <div style="margin-top:10px;">
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary text-uppercase">Add SubCategory</button>
+            </div>
+            <div>
+                <a asp-action="SubCategoryList">Back to List</a>
+            </div>  
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

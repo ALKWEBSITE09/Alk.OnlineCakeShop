@@ -1,0 +1,32 @@
+﻿@model E_Commerce_Cake.Models.ViewModel.PaymentVM
+
+<div class="align-content-center">
+	<div class="text-center text-success">
+		<h3>Payment Received Successfully</h3>
+	</div>
+	<br />
+	<table class="table table-striped" width="10px">
+		<thead>
+			<tr>
+				<td>
+					<b>
+						Transaction Number
+					</b>
+				</td>
+				<td>
+					@Html.DisplayText("TransId")
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>
+						Order Number
+					</b>
+				</td>
+				<td>
+					@Html.DisplayText("OrderId")
+				</td>
+			</tr>
+		</thead>
+	</table>
+</div>

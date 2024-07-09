@@ -1,0 +1,277 @@
+﻿@model E_Commerce_Cake.Models.Database.Invoice
+@{
+    ViewData["Title"] = "Invoicebills";
+    Layout = "../Shared/_Customer.cshtml";
+
+}
+
+@{
+    if (TempData["couponapply"] != null)
+    {
+        <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    display: flex;
+                    z-index:9999;
+                    justify-content: center;
+                    align-items: center;" id="overlay">
+            <div style="
+                    z-index:9999;
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    text-align: center;">
+                <h2 class=" text-success">Congratulation!</h2>
+                <p>Coupon Apply Successfully</p>
+                <button style="
+                    padding: 10px 20px;
+                    z-index:9999;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+    if (TempData["coupon"] != null)
+    {
+        <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        z-index:9999;
+                        justify-content: center;
+                        align-items: center;" id="overlay">
+            <div style="
+                        z-index:9999;
+                        background-color: #fff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        text-align: center;">
+                <h2 class=" text-danger">Sorry!</h2>
+                <p>Coupon Code Invalid!</p>
+                <button style="
+                        padding: 10px 20px;
+                        z-index:9999;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+    if (TempData["ccc"] != null)
+    {
+        <div style="
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            display: flex;
+                            z-index:9999;
+                            justify-content: center;
+                            align-items: center;" id="overlay">
+            <div style="
+                            z-index:9999;
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 8px;
+                            text-align: center;">
+                <h2 class=" text-danger">Sorry!</h2>
+                <p>Coupon Is Not Active!</p>
+                <button style="
+                            padding: 10px 20px;
+                            z-index:9999;
+                            background-color: #007bff;
+                            color: #fff;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+}
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Product detail</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a href="./index.html">Home</a>
+                    <a href="./shop.html">Shop</a>
+                    <span>@Model.Name</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Shop Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__details__img">
+                    <div class="cart__discount">
+                        <h6>Discount codes</h6>
+                        <form asp-action="Coupon" asp-route-id="@Model.Id">
+                            <input name="coupon" type="text" placeholder="Coupon code">
+                            <button type="submit">Apply</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details__text">
+                    <div class="product__label">@Model.Customer.FirstName  @Model.Customer.LastName</div>
+                    <h4>@Model.Name</h4>
+                    <h5>@Model.Phone</h5>
+                    <h5>@Model.TotalBill INR</h5>
+
+                    <p>
+                        @Model.Address
+                    </p>
+                    <ul>
+                        <li>State: <span>@Model.States.Name</span></li>
+                        <li>City: <span>@Model.Citys.Name</span></li>
+                        <li>Area: <span>@Model.Areas.Name</span></li>
+
+                    </ul>
+                    <div class="product__details__option">
+
+                        <a asp-action="OrderDetail" asp-route-id="@Model.Id" class="primary-btn">Preview</a>
+                        <a asp-action="DeleteInv" asp-controller="Invoices" asp-route-id="@Model.Id" class="heart__btn">Cancel Order</a>
+                        <a asp-action="Index" asp-controller="Payment" asp-route-id="@Model.Id" class="primary-btn">Place Ordr</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->
+
+@* 
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Time
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Time.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Coupon Code
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.CouponCode == null)
+            {
+                <span>Empty</span>
+
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.CouponCode)
+
+            }
+        </dd>
+        
+        
+        <dt class = "col-sm-2">
+            Shiping Address
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            City 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Citys.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            State
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.States.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Areas
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Areas.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Mobile No.
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            Total Bill
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalBill)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="OrderDetail" asp-route-id="@Model.Id" class="btn btn-secondary">Preview</a> |
+    <a asp-action="DeleteInv" asp-controller="Invoices" asp-route-id="@Model.Id" class="btn btn-danger">Cancel Order</a> | 
+    <a asp-action="Index" asp-controller="Payment" asp-route-id="@Model.Id" class="btn btn-success">Place Order</a>
+
+</div>
+ *@

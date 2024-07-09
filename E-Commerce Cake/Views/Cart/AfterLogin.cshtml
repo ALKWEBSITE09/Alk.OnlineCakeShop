@@ -1,0 +1,246 @@
+﻿@model IEnumerable<E_Commerce_Cake.Models.Database.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+
+}
+
+@{
+    if (TempData["favorateerror"] != null)
+    {
+        <div style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                z-index:9999;
+                justify-content: center;
+                align-items: center;" id="overlay">
+            <div style="
+                z-index:9999;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                text-align: center;">
+                <h2 class=" text-danger">Sorry!</h2>
+                <p>Favorate Alredy Added</p>
+                <button style="
+                padding: 10px 20px;
+                z-index:9999;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+    if (TempData["favorate"] != null)
+    {
+        <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            z-index:9999;
+            justify-content: center;
+            align-items: center;" id="overlay">
+            <div style="
+            z-index:9999;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;">
+                <h2 class=" text-success">Congratulations!</h2>
+                <p>Favorate Added</p>
+                <button style="
+            padding: 10px 20px;
+            z-index:9999;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+    if (TempData["addcart"] != null)
+    {
+        <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        z-index:9999;
+        justify-content: center;
+        align-items: center;" id="overlay">
+            <div style="
+        z-index:9999;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;">
+                <h2 class=" text-success">Congratulations!</h2>
+                <p>Cart Added</p>
+                <button style="
+        padding: 10px 20px;
+        z-index:9999;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;" onclick="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        </script>
+    }
+}
+
+<section class="product spad">
+    <div class="container">
+        <form asp-action="AfterLogin" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-group mb-3">
+                <select type="search" name="anyone" asp-items="ViewBag.CategoryesId" class="form-control" placeholder="Search Items" aria-label="Search Items" aria-describedby="button-addon2">
+                    <option>All</option>
+                </select>
+
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+
+                        <div class="product__item__pic set-bg" data-setbg="../Images/Product/@Html.DisplayFor(modelItem => item.ImagePath)">
+                            <div class="product__label">
+                                <span>@Html.DisplayFor(modelItem => item.Name)</span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#"> @Html.DisplayFor(modelItem => item.Cg.Tittle)</a></h6>
+                            <div class="product__item__price">@Html.DisplayFor(modelItem => item.Price)</div>
+                            <div class="cart_add">
+                                <a asp-action="AddCart" asp-route-id="@item.Id">Add to cart</a> |
+                                <a asp-action="AddFavo" asp-controller="Favorate" asp-route-id="@item.Id"><img src="~/Template/img/icon/heart.png" alt=""></a> |
+                                <a asp-action="Detail" asp-route-id="@item.Id">Details</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+@* 
+<h1 class="row justify-content-center" style="font-weight:bold;">Products</h1>
+<hr />
+<div class="row justify-content-start">
+        <div class="col-md-3">
+            <form asp-action="AfterLogin" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="input-group mb-3">
+                    <select type="search" name="anyone" class="form-control" asp-items="ViewBag.CategoryesId" placeholder="Search Items" aria-label="Search Items" aria-describedby="button-addon2">
+                        <option>All</option>
+                    </select>
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<div class="ProductBox"  style="display:flex; flex-wrap:wrap;" > 
+    @foreach (var item in Model) {
+            <div class="card" style="width: 16rem; margin-left:10px;margin-right:10px;margin-top:10px;margin-bottom:10px; ">
+                <img src="~/Images//Product/@Html.DisplayFor(modelItem => item.ImagePath)" width="150px" height="150px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight:bold;">
+                       <td>
+                            @Html.DisplayFor(modelItem => item.Cg.Tittle)
+                       </td>
+                     </h5>
+                 <p class="card-text">
+                     <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                     </td>
+                     <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                     </td>
+                     <p>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.Scg.tittle)
+                         </td>
+                     </p>
+                     <p>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                         </td      
+                     </p>
+                          
+                </p>
+                <p style="display:flex; flex-wrap:wrap; flex-direction:row">
+                     <a asp-action="AddCart" asp-route-id="@item.Id" class="cartindex btn bg-warning" >
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                         </svg>
+                     </a>
+                     <a asp-action="AddFavo" asp-controller="Favorate" asp-route-id="@item.Id" class="cartindex btn bg-danger">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                    </svg></a>
+                     <a asp-action="Index" asp-controller="Reviews" asp-route-id="@item.Id" class="btn btn-info cartindex">Review</a>
+
+                </p>
+                </div>
+            </div>
+    }
+</div>
+ *@

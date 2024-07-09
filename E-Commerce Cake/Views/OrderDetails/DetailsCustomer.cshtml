@@ -1,0 +1,93 @@
+﻿@model E_Commerce_Cake.Models.Database.OrderDetail
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "../Shared/_Customer.cshtml";
+}
+
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Order Item detail</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="IndexCustomer" asp-controller="OrderDetails" asp-route-id="@Model.invId">Back</a>
+                    <a asp-action="AfterLogin" asp-controller="Cart">Shop</a>
+                    <span>@Model.inv.Customer.Username</span>
+                </div 
+            </div>
+        </div>
+    </div>
+</div>
+                            <hr />
+
+<section class="contact spad">
+    <div class="container">
+        <div class="contact__address">
+            <div class="row ">
+                <div class="col-lg-12">
+                    <div class="contact__form">
+
+                        <div>
+                            <dl class="row">
+                                <dt class="col-sm-4">
+                                    Item Image
+                                </dt>
+                                <dd class="col-sm-8">
+                                    <img src="~/Images/Product/@Html.DisplayFor(model => model.Item.ImagePath)" width="150px" height="150px" />
+                                </dd>
+                                
+                                <dt class="col-sm-4">
+                                    Item Name
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Item.Name)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Category Name
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Item.Cg.Tittle)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Sub Category Name
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Item.Scg.tittle)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Quantity
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Quantity)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Price
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.Price)
+                                </dd>
+                                <dt class="col-sm-4">
+                                    Total Price
+                                </dt>
+                                <dd class="col-sm-8">
+                                    @Html.DisplayFor(model => model.SubTotal)
+                                </dd>
+                            </dl>
+                        </div>
+                        <div>
+                            <a class="btn bg-dark text-white" asp-route-id="@Model.invId" asp-action="IndexCustomer">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

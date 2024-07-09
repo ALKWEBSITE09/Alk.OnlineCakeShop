@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-Commerce Store</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site_Admin.css" asp-append-version="true" type="text/css">
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header__logo">
+                <a asp-action="Dashboard" asp-controller="Admin"><img src="~/Images/Photos/logo.png" alt=""></a>
+                <a class="Home module" asp-action="Dashboard" asp-controller="Admin">Home</a>
+
+                
+                <a class="Account text-black module" asp-route-id="@TempData["Hii"]" asp-action="AdminUser" asp-controller="Admin">
+                    <svg class="module" asp-action="AdminUser" asp-controller="Admin" xmlns="http://www.w3.org/2000/svg" width="27.5" height="27.5" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                    Hii @TempData["Hii"]
+                </a>
+                <
+                <a class="logout text-black module" asp-action="LogOut" asp-controller="Admin">
+                    <svg class="module" asp-action="Logout" asp-controller="Admin" xmlns="http://www.w3.org/2000/svg" width="27.5" height="27.5" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path asp-action="Logout" asp-controller="Admin" fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                        <path asp-action="Logout" asp-controller="Admin" fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                    </svg>
+                    LogOut
+                </a>
+            </div>
+
+            <nav class="navbars">
+                <ul class="list">
+
+                    <div class="btn-group Items">
+                        <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Category" asp-action="CategoryList">Add Category</a></li>
+                            <li><a class="dropdown-item" asp-controller="SubCategory" asp-action="SubCategoryList">Add SubCategory</a></li>
+                            <li><a class="dropdown-item" asp-controller="Products" asp-action="Index">Add Product</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group Items1">
+                        <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Address
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="States" asp-action="Index">Add State</a></li>
+                            <li><a class="dropdown-item" asp-controller="Cities" asp-action="Index">Add City</a></li>
+                            <li><a class="dropdown-item" asp-controller="Areas" asp-action="Index">Add Area</a></li>
+                        </ul>
+                    </div>
+                   @*  <div class="btn-group Items1">
+                        <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Status
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="OrderStatus" asp-action="Index">Order Status</a></li>
+                            <li><a class="dropdown-item" asp-controller="PriceChecks" asp-action="Index">Choice Status</a></li>
+                        </ul>
+                    </div> *@
+                    <li class="nav-item">
+                        <a class="module" asp-controller="Choices" asp-action="Index">Choice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="module" asp-controller="Coupons" asp-action="Index">Coupons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="module" asp-controller="UserTypes" asp-action="Index">UserType</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="module" asp-controller="ContactUs" asp-action="Index">Contacts</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="module" asp-controller="Invoices" asp-action="Index">Order</a>
+                    </li>
+                    
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My E-Commerce Store. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

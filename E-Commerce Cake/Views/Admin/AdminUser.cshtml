@@ -1,0 +1,57 @@
+﻿@model E_Commerce_Cake.Models.Database.Admin
+
+@{
+    ViewData["Title"] = "AdminUser";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>AdminUser</h1>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShopOpenDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShopOpenDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShopName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShopName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShopOwnerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShopOwnerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a class="btn bg-success text-white" asp-action="EditAdmin" class="AdminUser Admincolor-success" asp-route-id="@Model?.Id">Edit</a>   |
+    <a class="btn bg-danger text-white" asp-action="DeleteAdmin" class="AdminUser Admincolor-danger" asp-route-id="@Model?.Id">Delete</a>   |
+    <a class="btn bg-dark text-white" asp-action="Dashboard">Back to List</a>
+</div>

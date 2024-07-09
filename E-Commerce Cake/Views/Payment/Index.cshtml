@@ -1,0 +1,32 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "../Shared/_Customer.cshtml";
+
+}
+
+<h1 style="font-weight:bold;" class="text-black row justify-content-center">Payment Method</h1>
+<hr />
+
+<section class="contact spad">
+    <div class="container">
+        <div class="contact__address">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact__form">
+
+                        <div class="">
+                            <a class="btn bg-warning text-black" asp-action="Initialorder" asp-route-id="@TempData["invId"]">Online Payment</a>
+                            <a></a>
+                            <a class="btn bg-success text-white" asp-action="CashOnDelivery">Cash On Delivery</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+﻿@model E_Commerce_Cake.Models.Database.Choice
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Customer.cshtml";
+
+}
+
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__text">
+                    <h2>Product detail</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="breadcrumb__links">
+                    <a asp-action="IndexCustomer" asp-controller="Choices">Back</a>
+                    <a asp-action="AfterLogin" asp-controller="Cart">Shop</a>
+                    <span>@Model.MyProperty.Username</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<hr />
+<!-- Shop Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__details__img">
+                    <div class="product__details__big__img">
+                        <img class="big_img" src="~/Images//Choice/@Model.Image" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details__text">
+                    <div class="product__label">@Model.MyProperty.Email</div>
+                    <h4>@Model.Quantity Gram</h4>
+                    <h5>@Model.PriceId</h5>
+                    <p>
+                        @Model.Description
+                    </p>
+                    <ul>
+                        <li>Category: <span>@Model.subcate.tittle</span></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->
+@* 
+<div>
+    <h4>Choice</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Image
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/Images//Choice/@Html.DisplayFor(model => model.Image)" width="200px" height="200px" />
+        </dd>
+        <dt class = "col-sm-2">
+            Quantity
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            Description
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            Price
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PriceId)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a class="btn bg-dark text-white" asp-action="IndexCustomer">Back to List</a>
+</div>
+ *@
