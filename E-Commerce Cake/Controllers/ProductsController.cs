@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
+using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
-using Microsoft.EntityFrameworkCore.SqlServer.Design.Internal;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -22,7 +17,7 @@ namespace E_Commerce_Cake.Controllers
             this.env = env;
         }
 
-       
+
 
         // GET: Products
         public async Task<IActionResult> Index(string anyone)
@@ -100,7 +95,7 @@ namespace E_Commerce_Cake.Controllers
                     vm.ImagePath.CopyTo(new FileStream(fullPath, FileMode.Create));
                 }
 
-                
+
                 Product product = new Product
                 {
                     Name = vm.Name,
@@ -111,7 +106,7 @@ namespace E_Commerce_Cake.Controllers
                     ImagePath = filepath
 
                 };
-               
+
 
                 _context.cakeproduct.Add(product);
                 await _context.SaveChangesAsync();
@@ -173,7 +168,7 @@ namespace E_Commerce_Cake.Controllers
         // POST: Products/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddSubCategory(int id,AddSubCategory product)
+        public async Task<IActionResult> AddSubCategory(int id, AddSubCategory product)
         {
             if (id != product.Id)
             {
@@ -189,7 +184,7 @@ namespace E_Commerce_Cake.Controllers
                     if (item != null)
                     {
                         item.Name = item.Name;
-                        item.Description = item.Description;    
+                        item.Description = item.Description;
                         item.Price = item.Price;
                         item.CategoryesId = item.CategoryesId;
                         item.SubCategoryId = product.SubCategoryId;
@@ -204,7 +199,7 @@ namespace E_Commerce_Cake.Controllers
                         return NotFound();
                     }
 
-                    
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -270,7 +265,7 @@ namespace E_Commerce_Cake.Controllers
         // POST: Products/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,ProductVM vm)
+        public async Task<IActionResult> Edit(int id, ProductVM vm)
         {
             if (id != vm.Id)
             {
@@ -356,10 +351,10 @@ namespace E_Commerce_Cake.Controllers
             }
         }
 
-        
+
 
         // GET: Products/Delete/5
-        
+
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _context.cakeproduct.FindAsync(id);

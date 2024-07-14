@@ -2,9 +2,6 @@
 using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using Newtonsoft.Json.Linq;
-using Razorpay.Api;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -30,7 +27,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // User Register
@@ -82,7 +79,7 @@ namespace E_Commerce_Cake.Controllers
             return View();
         }
 
-        
+
 
         // User Login
 
@@ -260,9 +257,9 @@ namespace E_Commerce_Cake.Controllers
                             context.cakeuser.Update(data);
                             await context.SaveChangesAsync();
                             TempData["edit"] = "Data Successfully Update...";
-                            return RedirectToAction("CustomerUser", "Customer", new {id=data.Phone});
+                            return RedirectToAction("CustomerUser", "Customer", new { id = data.Phone });
                         }
-                        
+
                     }
                 }
                 return View(item);
@@ -271,7 +268,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
+
         }
 
         public IActionResult MobileCheck()
@@ -307,7 +304,7 @@ namespace E_Commerce_Cake.Controllers
         {
             var data = await context.cakeuser.FirstOrDefaultAsync(x => x.Id == id);
 
-            if(data != null)
+            if (data != null)
             {
                 data.FirstName = data.FirstName;
                 data.LastName = data.LastName;
@@ -324,7 +321,7 @@ namespace E_Commerce_Cake.Controllers
                 TempData["Forgot"] = "done";
                 return RedirectToAction("Login", "Customer");
             }
-            return View(); 
+            return View();
         }
 
 
@@ -359,7 +356,7 @@ namespace E_Commerce_Cake.Controllers
                 TempData["count"] = countcart.Count;
                 TempData["Hii"] = value.FirstName;
                 var data = await context.cakeuser.FirstOrDefaultAsync(x => x.Id == id);
-                if(data == null)
+                if (data == null)
                 {
                     return NotFound();
                 }
@@ -370,8 +367,8 @@ namespace E_Commerce_Cake.Controllers
                 return RedirectToAction("Login", "Admin");
             }
 
-           
-           
+
+
         }
     }
 }

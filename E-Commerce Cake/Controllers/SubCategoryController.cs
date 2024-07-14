@@ -99,7 +99,7 @@ namespace E_Commerce_Cake.Controllers
         {
             if (ModelState.IsValid)
             {
-                var data = await context.cakesubcategory.FirstOrDefaultAsync(x => x.Id==vm.Id);
+                var data = await context.cakesubcategory.FirstOrDefaultAsync(x => x.Id == vm.Id);
                 if (data != null)
                 {
                     data.tittle = vm.tittle;
@@ -139,7 +139,7 @@ namespace E_Commerce_Cake.Controllers
         {
             if (HttpContext.Session.GetString("admin") != null)
             {
-                if(id == null)
+                if (id == null)
                 {
                     return NotFound();
                 }

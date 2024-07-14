@@ -2,9 +2,6 @@
 using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using Newtonsoft.Json.Linq;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -22,7 +19,7 @@ namespace E_Commerce_Cake.Controllers
         public async Task<IActionResult> AdminList()
         {
             TempData["Hii"] = HttpContext.Session.GetString("admin");
-            var data = await context.cakeadmin.Include(x => x.customer).Where(x => x.UserTypesId!=2).ToListAsync();
+            var data = await context.cakeadmin.Include(x => x.customer).Where(x => x.UserTypesId != 2).ToListAsync();
             return View(data);
         }
 

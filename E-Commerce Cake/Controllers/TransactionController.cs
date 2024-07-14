@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -50,9 +45,9 @@ namespace E_Commerce_Cake.Controllers
 
             return View(payment);
         }
-        
+
         // GET: Transaction/Delete/5
-        
+
         public async Task<IActionResult> Delete(int id)
         {
             var payment = await _context.payList.FindAsync(id);

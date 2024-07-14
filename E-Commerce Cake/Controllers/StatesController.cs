@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -30,7 +25,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // GET: States/Details/5
@@ -57,7 +52,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-           
+
         }
 
         // GET: States/Create
@@ -72,7 +67,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: States/Create
@@ -113,7 +108,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: States/Edit/5
@@ -152,7 +147,7 @@ namespace E_Commerce_Cake.Controllers
         }
 
         // GET: States/Delete/5
-       
+
         public async Task<IActionResult> Delete(int id)
         {
             var state = await _context.State.FindAsync(id);

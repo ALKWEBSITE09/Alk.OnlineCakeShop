@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
+using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -15,7 +11,7 @@ namespace E_Commerce_Cake.Controllers
         private readonly CakeDbContext _context;
         private readonly IWebHostEnvironment env;
 
-        public ChoicesController(CakeDbContext context,IWebHostEnvironment env)
+        public ChoicesController(CakeDbContext context, IWebHostEnvironment env)
         {
             _context = context;
             this.env = env;
@@ -28,7 +24,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 TempData["Hii"] = HttpContext.Session.GetString("admin");
                 var cakeDbContext = _context.choices.Include(c => c.Pc).Include(c => c.Status).Include(x => x.MyProperty);
-                
+
                 if (cakeDbContext == null)
                 {
                     return NotFound();
@@ -78,10 +74,10 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
         [HttpPost]
-        public async Task<IActionResult> EnterPrice(int? id,PriceEnter pe)
+        public async Task<IActionResult> EnterPrice(int? id, PriceEnter pe)
         {
             if (ModelState.IsValid)
             {
@@ -98,12 +94,12 @@ namespace E_Commerce_Cake.Controllers
                     _context.Update(data);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
-                    
+
                 }
             }
             ViewData["Price"] = new SelectList(_context.Cprice, "Id", "priceId", pe.priceId);
             return View();
-            
+
         }
 
 
@@ -112,7 +108,7 @@ namespace E_Commerce_Cake.Controllers
         public async Task<IActionResult> Accept(int? id)
         {
             var data = await _context.choices.Include(x => x.MyProperty).FirstOrDefaultAsync(x => x.Id == id);
-            if (data !=null)
+            if (data != null)
             {
                 data.Quantity = data.Quantity;
                 data.Description = data.Description;
@@ -125,7 +121,7 @@ namespace E_Commerce_Cake.Controllers
             await _context.SaveChangesAsync();
             TempData["Accept"] = data.MyProperty.Email + " Order Accepted.";
             return RedirectToAction("Index");
-         
+
         }
 
         public async Task<IActionResult> Accepted(int? id)
@@ -150,27 +146,27 @@ namespace E_Commerce_Cake.Controllers
         //admin order Not accept
 
         public async Task<IActionResult> NotAccept(int? id)
-		{
-			var data = await _context.choices.Include(x => x.MyProperty).FirstOrDefaultAsync(x => x.Id == id);
-			if (data != null)
-			{
-				data.Quantity = data.Quantity;
-				data.Description = data.Description;
-				data.PriceId = data.PriceId;
-				data.PriceCheckId = data.PriceCheckId;
-				data.ChoiceorderId = 3;
-				data.UserId = data.UserId;
-			}
-			_context.Update(data);
-			await _context.SaveChangesAsync();
+        {
+            var data = await _context.choices.Include(x => x.MyProperty).FirstOrDefaultAsync(x => x.Id == id);
+            if (data != null)
+            {
+                data.Quantity = data.Quantity;
+                data.Description = data.Description;
+                data.PriceId = data.PriceId;
+                data.PriceCheckId = data.PriceCheckId;
+                data.ChoiceorderId = 3;
+                data.UserId = data.UserId;
+            }
+            _context.Update(data);
+            await _context.SaveChangesAsync();
             TempData["NotAccept"] = data.MyProperty.Email + "Order Not Accepted.";
 
             return RedirectToAction("Index");
 
-		}
-		//admin deliver order
+        }
+        //admin deliver order
 
-		public async Task<IActionResult> Deliver(int? id)
+        public async Task<IActionResult> Deliver(int? id)
         {
             var data = await _context.choices.Include(x => x.MyProperty).FirstOrDefaultAsync(x => x.Id == id);
             if (data != null)
@@ -192,8 +188,8 @@ namespace E_Commerce_Cake.Controllers
 
         // details shows admin
 
-		public async Task<IActionResult> Details(int? id)
-		{
+        public async Task<IActionResult> Details(int? id)
+        {
             if (HttpContext.Session.GetString("admin") != null)
             {
                 TempData["Hii"] = HttpContext.Session.GetString("admin");
@@ -217,16 +213,16 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
-		}
+
+        }
 
 
 
-		//customer sgow thois sides< ------------------------------------------------------------------------>
+        //customer sgow thois sides< ------------------------------------------------------------------------>
         // Customer Choice List
 
-		public async Task<IActionResult> IndexCustomer()
-		{
+        public async Task<IActionResult> IndexCustomer()
+        {
 
             if (HttpContext.Session.GetString("user") != null)
             {
@@ -246,11 +242,11 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
-		}
+
+        }
 
 
-         
+
         /// <param name="id"></param>
         /// <returns></returns>
         // GET: Choices/Details/5
@@ -273,7 +269,7 @@ namespace E_Commerce_Cake.Controllers
                     .Include(c => c.Pc)
                     .Include(c => c.Status)
                     .Include(c => c.subcate)
-                    .Include(c => c.MyProperty) 
+                    .Include(c => c.MyProperty)
                     .FirstOrDefaultAsync(m => m.Id == id);
                 if (choice == null)
                 {
@@ -286,7 +282,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
+
         }
 
         // Accept Customer 
@@ -345,7 +341,7 @@ namespace E_Commerce_Cake.Controllers
                 TempData["Hii"] = value.FirstName;
                 ViewData["PriceCheckId"] = new SelectList(_context.PriceCheck, "Id", "Id");
                 ViewData["ChoiceorderId"] = new SelectList(_context.ordersstatus, "Id", "Id");
-                ViewData["Sub"] = new SelectList(_context.cakesubcategory.Where(x => x.CategoryesId==1), "Id", "tittle");
+                ViewData["Sub"] = new SelectList(_context.cakesubcategory.Where(x => x.CategoryesId == 1), "Id", "tittle");
 
                 return View();
             }
@@ -353,7 +349,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
+
         }
 
         // POST: Choices/Create
@@ -402,10 +398,10 @@ namespace E_Commerce_Cake.Controllers
             ViewData["Sub"] = new SelectList(_context.cakesubcategory.Where(x => x.CategoryesId == 1), "Id", "tittle");
 
             return View(choice);
-        }        
+        }
 
         // GET: Choices/Delete/5
-       
+
         public async Task<IActionResult> Delete(int id)
         {
             var choice = await _context.choices.FindAsync(id);

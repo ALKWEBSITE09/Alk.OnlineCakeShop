@@ -1,5 +1,4 @@
 ﻿using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Razorpay.Api;
@@ -45,9 +44,9 @@ namespace E_Commerce_Cake.Controllers
         {
             if (HttpContext.Session.GetString("user") != null)
             {
-                
+
                 TempData["cashon"] = "Your Order Successfully Placed....";
-                return RedirectToAction("Create","FeedBacks");
+                return RedirectToAction("Create", "FeedBacks");
             }
             else
             {
@@ -55,12 +54,12 @@ namespace E_Commerce_Cake.Controllers
             }
         }
 
-        
+
 
         public async Task<IActionResult> Initialorder(int? id)
         {
             var inv = await context.inv.Include(x => x.Customer).FirstOrDefaultAsync(x => x.Id == id);
-            
+
 
             if (inv != null)
             {
@@ -101,7 +100,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Create", "FeedBacks");
             }
-           
+
         }
     }
 }

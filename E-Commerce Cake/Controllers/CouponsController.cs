@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
+﻿using E_Commerce_Cake.Models.Database;
 using E_Commerce_Cake.Models.ViewModel;
-using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -16,7 +10,7 @@ namespace E_Commerce_Cake.Controllers
         private readonly CakeDbContext _context;
         private readonly IWebHostEnvironment env;
 
-        public CouponsController(CakeDbContext context,IWebHostEnvironment env)
+        public CouponsController(CakeDbContext context, IWebHostEnvironment env)
         {
             _context = context;
             this.env = env;
@@ -92,7 +86,7 @@ namespace E_Commerce_Cake.Controllers
             var finalString = new String(stringChars);
 
             coupon.CouponCode = finalString;
-           
+
 
             if (ModelState.IsValid)
             {
@@ -106,7 +100,7 @@ namespace E_Commerce_Cake.Controllers
                     coupon.CouponImage.CopyTo(new FileStream(fullPath, FileMode.Create));
 
 
-                    
+
 
 
                     Coupon data = new Coupon
@@ -131,8 +125,8 @@ namespace E_Commerce_Cake.Controllers
             return View(coupon);
         }
 
-            // GET: Coupons/Edit/5
-            public async Task<IActionResult> Edit(int? id)
+        // GET: Coupons/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (HttpContext.Session.GetString("admin") != null)
             {
@@ -173,7 +167,7 @@ namespace E_Commerce_Cake.Controllers
         // POST: Coupons/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,CouponVM vm)
+        public async Task<IActionResult> Edit(int id, CouponVM vm)
         {
             if (id != vm.Id)
             {
@@ -241,7 +235,7 @@ namespace E_Commerce_Cake.Controllers
         }
 
         // GET: Coupons/Delete/5
-       
+
         public async Task<IActionResult> Delete(int id)
         {
             var coupon = await _context.cakecoupon.FindAsync(id);

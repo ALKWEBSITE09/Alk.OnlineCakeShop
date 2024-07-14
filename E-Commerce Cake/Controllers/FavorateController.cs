@@ -1,7 +1,5 @@
 ﻿using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace E_Commerce_Cake.Controllers
@@ -38,7 +36,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
+
         }
         public async Task<IActionResult> AddFavo(int? id)
         {
@@ -62,7 +60,7 @@ namespace E_Commerce_Cake.Controllers
                     await context.SaveChangesAsync();
                     TempData["favorateerror"] = "no";
 
-                    return RedirectToAction("AfterLogin","Cart");
+                    return RedirectToAction("AfterLogin", "Cart");
 
                 }
                 if (data != null)
@@ -77,7 +75,7 @@ namespace E_Commerce_Cake.Controllers
                     await context.SaveChangesAsync();
                     TempData["favorate"] = "done";
 
-                    return RedirectToAction("AfterLogin","Cart");
+                    return RedirectToAction("AfterLogin", "Cart");
                 }
                 return View(data);
             }
@@ -85,13 +83,13 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
+
         }
 
         public async Task<IActionResult> Delete(int id)
         {
             var invoice = await context.favo.Include(x => x.Item.Cg).FirstOrDefaultAsync(x => x.Id == id);
-            
+
             if (invoice != null)
             {
                 context.favo.Remove(invoice);

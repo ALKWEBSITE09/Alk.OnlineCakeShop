@@ -1,6 +1,5 @@
-﻿using E_Commerce_Cake.Models.Database;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace E_Commerce_Cake.Models.ViewModel
 {

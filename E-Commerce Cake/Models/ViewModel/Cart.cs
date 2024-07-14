@@ -1,6 +1,4 @@
-﻿using E_Commerce_Cake.Models.Database;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace E_Commerce_Cake.Models.ViewModel
 {
@@ -12,6 +10,6 @@ namespace E_Commerce_Cake.Models.ViewModel
         public int Count { get; set; }
         public double Price { get; set; }
         public int UserId { get; set; }
-        public double Bill {  get; set; }
+        public double Bill { get; set; }
     }
 }

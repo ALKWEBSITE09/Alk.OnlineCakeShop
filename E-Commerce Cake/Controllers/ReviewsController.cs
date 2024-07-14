@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -25,7 +20,7 @@ namespace E_Commerce_Cake.Controllers
             TempData["gg"] = HttpContext.Session.GetString("user");
             var value = _context.cakeuser.FirstOrDefault(x => x.Phone == TempData["gg"]);
             TempData["Hii"] = value.FirstName;
-            var cakeDbContext = _context.review.Include(r => r.Item).Include(r => r.User).Where(x => x.ItemId ==id);
+            var cakeDbContext = _context.review.Include(r => r.Item).Include(r => r.User).Where(x => x.ItemId == id);
             return View(await cakeDbContext.ToListAsync());
         }
 
@@ -55,7 +50,7 @@ namespace E_Commerce_Cake.Controllers
         // GET: Reviews/Create
         public IActionResult Create(int? id)
         {
-         
+
             return View();
         }
 
@@ -64,7 +59,7 @@ namespace E_Commerce_Cake.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int? id,Review review)
+        public async Task<IActionResult> Create(int? id, Review review)
         {
             if (ModelState.IsValid)
             {
@@ -81,13 +76,13 @@ namespace E_Commerce_Cake.Controllers
                 };
                 _context.Add(rv);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("IndexCustomer","Invoices");
+                return RedirectToAction("IndexCustomer", "Invoices");
             }
-         
+
             return View(review);
         }
 
-      
+
 
         private bool ReviewExists(int id)
         {

@@ -12,7 +12,7 @@ namespace E_Commerce_Cake.Models.Database
         [RegularExpression("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", ErrorMessage = "Enter Valid Email.")]
         [StringLength(100)]
         public string Email { get; set; }
-        [Required(ErrorMessage ="Name Is Required.")]
+        [Required(ErrorMessage = "Name Is Required.")]
         [StringLength(20)]
         public string Name { get; set; }
         [Required(ErrorMessage = "Description Is Required.")]

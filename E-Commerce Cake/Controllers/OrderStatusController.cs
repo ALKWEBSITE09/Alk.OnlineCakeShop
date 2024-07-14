@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -58,10 +53,10 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
-     
+
         // GET: OrderStatus/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -84,7 +79,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: OrderStatus/Edit/5
@@ -122,7 +117,7 @@ namespace E_Commerce_Cake.Controllers
             return View(orderStatus);
         }
 
-        
+
         private bool OrderStatusExists(int id)
         {
             return _context.ordersstatus.Any(e => e.Id == id);

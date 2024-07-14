@@ -17,7 +17,7 @@ namespace E_Commerce_Cake.Models.Database
         public int PriceCheckId { get; set; }
         [ForeignKey(nameof(PriceCheckId))]
         public PriceCheck Pc { get; set; }
-        public int ChoiceorderId { get; set;}
+        public int ChoiceorderId { get; set; }
         [ForeignKey(nameof(ChoiceorderId))]
 
         public OrderStatus Status { get; set; }

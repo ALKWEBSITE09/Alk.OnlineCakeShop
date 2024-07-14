@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
+using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -32,7 +28,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-           
+
         }
 
         // GET: Cities/Details/5
@@ -60,7 +56,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // GET: Cities/Create
@@ -76,7 +72,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: Cities/Create
@@ -123,7 +119,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: Cities/Edit/5
@@ -131,7 +127,7 @@ namespace E_Commerce_Cake.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,CityVM city)
+        public async Task<IActionResult> Edit(int id, CityVM city)
         {
             if (id != city.Id)
             {
@@ -169,7 +165,7 @@ namespace E_Commerce_Cake.Controllers
         }
 
         // GET: Cities/Delete/5
-        
+
         public async Task<IActionResult> Delete(int id)
         {
             var city = await _context.City.FindAsync(id);

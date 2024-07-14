@@ -10,7 +10,7 @@ namespace E_Commerce_Cake.Models.Database
         [Required]
         public string Description { get; set; }
         [Required]
-        [Range(0, 5,ErrorMessage ="Enter 0 To 5 Number")]
+        [Range(0, 5, ErrorMessage = "Enter 0 To 5 Number")]
         public int Rating { get; set; }
         public int ItemId { get; set; }
         [ForeignKey(nameof(ItemId))]

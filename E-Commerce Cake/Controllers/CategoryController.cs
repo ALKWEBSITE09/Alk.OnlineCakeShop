@@ -32,7 +32,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // Create Category
@@ -53,7 +53,7 @@ namespace E_Commerce_Cake.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CategoryVM vm)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Category data = new Category
                 {
@@ -98,10 +98,10 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
         [HttpPost]
-        public async Task<IActionResult> EditCategory(int? id,CategoryVM vm)
+        public async Task<IActionResult> EditCategory(int? id, CategoryVM vm)
         {
             if (ModelState.IsValid)
             {
@@ -146,7 +146,7 @@ namespace E_Commerce_Cake.Controllers
         {
             if (HttpContext.Session.GetString("admin") != null)
             {
-                if(id == null)
+                if (id == null)
                 {
                     return NotFound();
                 }

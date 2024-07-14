@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.ViewModel;
-using E_Commerce_Cake.Models.Database;
+﻿using E_Commerce_Cake.Models.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Commerce_Cake.Models.Database
 {
@@ -8,16 +7,16 @@ namespace E_Commerce_Cake.Models.Database
     {
         public CakeDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
         public DbSet<UserType> cakeusertype { get; set; }
-        public DbSet<User> cakeuser{ get; set; }
+        public DbSet<User> cakeuser { get; set; }
         public DbSet<Admin> cakeadmin { get; set; }
         public DbSet<Category> cakecategory { get; set; }
         public DbSet<SubCategory> cakesubcategory { get; set; }
         public DbSet<Product> cakeproduct { get; set; }
         public DbSet<ProductCart> cakecart { get; set; }
-        public DbSet<Coupon> cakecoupon{ get; set; }
+        public DbSet<Coupon> cakecoupon { get; set; }
         public DbSet<Invoice> inv { get; set; }
         public DbSet<OrderDetail> cakeorderdetail { get; set; }
         public DbSet<City> City { get; set; }

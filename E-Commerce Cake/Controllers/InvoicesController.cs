@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -31,7 +26,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         public async Task<IActionResult> IndexCustomer()
@@ -76,7 +71,7 @@ namespace E_Commerce_Cake.Controllers
 
                 TempData["Accept"] = data.Customer.Email + "Order Accepted.";
 
-                return RedirectToAction("Index");   
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -160,7 +155,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
 
@@ -206,7 +201,7 @@ namespace E_Commerce_Cake.Controllers
         {
             var invoice = await _context.inv.FindAsync(id);
 
-            var order = await _context.cakeorderdetail.Where(x => x.invId==invoice.Id).ToListAsync();
+            var order = await _context.cakeorderdetail.Where(x => x.invId == invoice.Id).ToListAsync();
 
             if (order != null)
             {
@@ -238,7 +233,7 @@ namespace E_Commerce_Cake.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("IndexCustomer","Invoices");
+            return RedirectToAction("IndexCustomer", "Invoices");
         }
 
 

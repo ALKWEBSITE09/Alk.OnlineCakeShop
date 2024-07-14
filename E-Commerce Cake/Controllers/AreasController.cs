@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
+using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -32,7 +28,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // GET: Areas/Details/5
@@ -60,7 +56,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // GET: Areas/Create
@@ -76,7 +72,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: Areas/Create
@@ -129,7 +125,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: Areas/Edit/5
@@ -137,7 +133,7 @@ namespace E_Commerce_Cake.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,AreaVM area)
+        public async Task<IActionResult> Edit(int id, AreaVM area)
         {
             if (id != area.Id)
             {
@@ -175,7 +171,7 @@ namespace E_Commerce_Cake.Controllers
         }
 
         // GET: Areas/Delete/5
-       
+
         public async Task<IActionResult> Delete(int id)
         {
             var area = await _context.Area.FindAsync(id);

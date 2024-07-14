@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -59,7 +54,7 @@ namespace E_Commerce_Cake.Controllers
             }
         }
 
-      
+
         // GET: PriceChecks/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -82,7 +77,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         // POST: PriceChecks/Edit/5
@@ -120,7 +115,7 @@ namespace E_Commerce_Cake.Controllers
             return View(priceCheck);
         }
 
-        
+
 
         private bool PriceCheckExists(int id)
         {

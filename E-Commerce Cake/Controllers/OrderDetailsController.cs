@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -31,7 +26,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         public async Task<IActionResult> IndexCustomer(int? id)
@@ -79,7 +74,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            
+
         }
 
         public async Task<IActionResult> DetailsCustomer(int? id)
@@ -114,7 +109,7 @@ namespace E_Commerce_Cake.Controllers
 
         }
 
-        
+
         public async Task<IActionResult> Delete(int id)
         {
             var orderDetail = await _context.cakeorderdetail.FindAsync(id);
@@ -168,7 +163,7 @@ namespace E_Commerce_Cake.Controllers
                 _context.Update(data);
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction("IndexCustomer","Invoices");
+            return RedirectToAction("IndexCustomer", "Invoices");
         }
 
         private bool OrderDetailExists(int id)

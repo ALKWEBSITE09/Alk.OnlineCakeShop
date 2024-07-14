@@ -23,7 +23,7 @@ namespace E_Commerce_Cake.Models.Database
         public string? Email { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
-        [StringLength(15,MinimumLength = 10)]
+        [StringLength(15, MinimumLength = 10)]
         public string? Phone { get; set; }
         [Required]
         [DataType(DataType.Password)]

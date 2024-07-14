@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using E_Commerce_Cake.Models.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce_Cake.Models.Database;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -74,14 +70,14 @@ namespace E_Commerce_Cake.Controllers
                 TempData["feed"] = "done";
                 _context.Add(fb);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Dashboard","Customer");
+                return RedirectToAction("Dashboard", "Customer");
             }
             ViewData["UserId"] = new SelectList(_context.cakeuser, "Id", "ConfirmPass", feedBack.UserId);
             return View(feedBack);
         }
 
-        
-        
+
+
         private bool FeedBackExists(int id)
         {
             return _context.feedBack.Any(e => e.Id == id);

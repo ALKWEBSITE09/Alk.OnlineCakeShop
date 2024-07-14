@@ -13,7 +13,7 @@ namespace E_Commerce_Cake.Models.ViewModel
 
         public double PriceId { get; set; }
         public int PriceCheckId { get; set; }
-        public int ChoiceorderId { get; set;}
+        public int ChoiceorderId { get; set; }
         public int UserId { get; set; }
     }
 }

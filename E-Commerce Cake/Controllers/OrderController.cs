@@ -1,12 +1,7 @@
 ﻿using E_Commerce_Cake.Models.Database;
-using E_Commerce_Cake.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
 
 namespace E_Commerce_Cake.Controllers
 {
@@ -44,7 +39,7 @@ namespace E_Commerce_Cake.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> Index(string address,int city,int area,int state,string phone,string name,string coupon)
+        public async Task<IActionResult> Index(string address, int city, int area, int state, string phone, string name, string coupon)
         {
             ViewData["Get"] = HttpContext.Session.GetString("user");
             var user = ViewData["Get"];
@@ -59,11 +54,11 @@ namespace E_Commerce_Cake.Controllers
                 billtotal += item.Bill;
             }
             ViewData["Total"] = billtotal;
-            
+
 
             var data = await context.cakecart.Include(x => x.Customer).Include(x => x.Item).Where(x => x.UsersId == u.Id).ToListAsync();
 
-            var coupons = await context.cakecoupon.Where(x => x.CouponCode==coupon).FirstOrDefaultAsync();
+            var coupons = await context.cakecoupon.Where(x => x.CouponCode == coupon).FirstOrDefaultAsync();
 
             if (coupons == null)
             {
@@ -112,16 +107,16 @@ namespace E_Commerce_Cake.Controllers
                     context.cakeorderdetail.Add(detail);
 
                 }
-                    await context.SaveChangesAsync();
-                
-                    var carts = await context.cakecart.Where(x => x.UsersId == u.Id).ToListAsync();
+                await context.SaveChangesAsync();
 
-                    if (carts.Any())
-                    {
-                        context.cakecart.RemoveRange(carts);
-                    }
-                    await context.SaveChangesAsync();
-                    return RedirectToAction("OrderDetail", "Order", new { id = inv.Id });
+                var carts = await context.cakecart.Where(x => x.UsersId == u.Id).ToListAsync();
+
+                if (carts.Any())
+                {
+                    context.cakecart.RemoveRange(carts);
+                }
+                await context.SaveChangesAsync();
+                return RedirectToAction("OrderDetail", "Order", new { id = inv.Id });
             }
             else
             {
@@ -160,15 +155,15 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-            
+
         }
 
-        public IActionResult Coupon(int? id,string coupon)
+        public IActionResult Coupon(int? id, string coupon)
         {
             var data = context.cakecoupon.FirstOrDefault(x => x.CouponCode == coupon);
             if (data != null)
             {
-                
+
                 var inv = context.inv.Where(x => x.Id == id).FirstOrDefault();
 
                 if (data.Type == CouponType.Currency)
@@ -181,7 +176,7 @@ namespace E_Commerce_Cake.Controllers
                         inv.Address = inv.Address;
                         inv.StateId = inv.StateId;
                         inv.CityId = inv.CityId;
-                        inv.AreaId  = inv.AreaId;
+                        inv.AreaId = inv.AreaId;
                         inv.Phone = inv.Phone;
 
                         data.CouponImage = data.CouponImage;
@@ -239,7 +234,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 TempData["coupon"] = "coupon code invalid";
             }
-            return RedirectToAction("Invoicebill", "Order", new {id=id});
+            return RedirectToAction("Invoicebill", "Order", new { id = id });
         }
 
         //invbills
@@ -269,7 +264,7 @@ namespace E_Commerce_Cake.Controllers
             {
                 return RedirectToAction("Login", "Customer");
             }
-           
+
         }
 
     }
